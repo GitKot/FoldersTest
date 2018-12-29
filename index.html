@@ -100,12 +100,12 @@
                 return ;
             };
             if (!!pressed[s]) {
-                let sortObj = chengeObj(obj, sortToFolder);
+                let sortObj = changeObj(obj, sortToFolder);
                 result(sortObj);
             };
             if (!!pressed[d]) result(obj);
             if (!!pressed[r]) {
-                let randomObj = chengeObj(obj, functRandom);
+                let randomObj = changeObj(obj, functRandom);
                 result(randomObj)
             };
             pressed = {};
@@ -122,11 +122,11 @@
         return Math.random() - 0.5;
     };
 
-    function chengeObj(objsort, customSort) {
+    function changeObj(objsort, customSort) {
         for (val in objsort) {
             if (Array.isArray(objsort[val])) {
                if((objsort[val].length > 1)) objsort[val].sort(customSort);
-               objsort[val].forEach(item => chengeObj(item, customSort))
+               objsort[val].forEach(item => changeObj(item, customSort))
             };
         };
         return objsort;
